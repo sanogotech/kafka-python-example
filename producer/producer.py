@@ -9,8 +9,12 @@ def main():
    
     # Publish /Send
 
-    producer.send(topic='paiementMNPF',key= b'Orange', value={'refContrat': '255358644'})
+    ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
+    metadata= ack.get()
     print("Publish ... to topic PaiementMNPF ....")
+    print(" topic = ",metadata.topic)
+    print(" partition = ",metadata.partition)
+    
     
     # Close
     producer.close()

@@ -5,6 +5,7 @@ import json
 
 def subscriber(topic):
 
+    # Consumer
     consumer = KafkaConsumer(
     topic,
      bootstrap_servers=['localhost:9092', 'localhost:9093'],
