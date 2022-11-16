@@ -14,11 +14,18 @@ def subscriber(topic):
      group_id='saphir-group',
      value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
+    """
     for message in consumer:
 
         print(message)
         print("Topic:  " + str(message[0]))
-        
+    """
+    
+    try:
+        for message in consumer:
+            print ("%s:%d:%d: key=%s value=%s" % (message.topic, message.partition,message.offset, message.key,message.value))
+    except KeyboardInterrupt:
+        sys.exit()
 
 if __name__ == '__main__':
 
