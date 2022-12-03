@@ -4,16 +4,17 @@ import json
 def main():
 
     ## Producer
-    producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+    producer = KafkaProducer(retries=5,bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         
    
     # Publish /Send
-
-    ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
-    metadata= ack.get()
-    print("Publish ... to topic PaiementMNPF ....")
-    print(" topic = ",metadata.topic)
-    print(" partition = ",metadata.partition)
+    i = 0
+    while i < 2:
+        ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
+        metadata= ack.get()
+        print("Publish ... to topic PaiementMNPF ....")
+        print(" topic = ",metadata.topic)
+        print(" partition = ",metadata.partition)
     
     
     # Close
@@ -25,8 +26,22 @@ if __name__ == '__main__':
     
     
     
-    
 
+"""
+I also hate reading "wall of text like" Kafka documentation :P
+As far as I understand:
+
+broker-list
+
+a full list of servers, if any missing producer may not work
+related to producer commands
+bootstrap-servers
+
+one is enough to discover all others
+related to consumer commands
+Zookeeper involved
+
+"""
 
 # produce keyed messages to enable hashed partitioning
 # producer.send('my-topic', key=b'foo', value=b'bar')
