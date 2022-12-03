@@ -5,6 +5,8 @@ I will see how use Apache Kafka with Python and make a sample application using 
 ## Docs
 
 - https://kafka-python.readthedocs.io/en/master/usage.html
+- https://github.com/sanogotech/kafkasparkelkpython/
+- https://github.com/sanogotech/kafka-docker-kubernetes
 
 ## Installing Python client for Apache Kafka
 
