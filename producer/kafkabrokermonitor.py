@@ -49,10 +49,10 @@ def callkafkaproducer():
     try:
         ## Producer
         logger.info("Start : Creation du KafkaProducer with all brokers ")
-        producer = KafkaProducer(bootstrap_servers=[KAFKA_BOOTSTRAP_SERVER],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
   
         # Publish /Send
-        ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
+        ack = producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
         metadata= ack.get()
         print("Publish ... to topic PaiementMNPF ....")
         print(" topic = ",metadata.topic)

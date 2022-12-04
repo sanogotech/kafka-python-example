@@ -1,0 +1,46 @@
+2022-12-04 07:59:53,976 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-04 07:59:56,005 INFO  Begin: Call Email Sender Alert ....************************************
+2022-12-04 07:59:56,032 INFO OK: Send email ...
+2022-12-04 07:59:56,034 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 52, in callkafkaproducer
+    producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\producer\kafka.py", line 383, in __init__
+    **self.config)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\client_async.py", line 244, in __init__
+    self.config['api_version'] = self.check_version(timeout=check_timeout)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\client_async.py", line 927, in check_version
+    raise Errors.NoBrokersAvailable()
+kafka.errors.NoBrokersAvailable: NoBrokersAvailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 158, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 61, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-04 08:00:56,427 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-04 08:00:58,454 INFO  Begin: Call Email Sender Alert ....************************************
+2022-12-04 08:00:58,469 INFO OK: Send email ...
+2022-12-04 08:00:58,470 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 52, in callkafkaproducer
+    producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\producer\kafka.py", line 383, in __init__
+    **self.config)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\client_async.py", line 244, in __init__
+    self.config['api_version'] = self.check_version(timeout=check_timeout)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python37\lib\site-packages\kafka\client_async.py", line 927, in check_version
+    raise Errors.NoBrokersAvailable()
+kafka.errors.NoBrokersAvailable: NoBrokersAvailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 158, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 61, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
