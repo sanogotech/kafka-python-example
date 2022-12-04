@@ -48,8 +48,8 @@ def callkafkaproducer():
     producer = None
     try:
         ## Producer
-        logger.info("Start : Creation du KafkaProducer avec la liste des brokers ")
-        producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        logger.info("Start : Creation du KafkaProducer with all brokers ")
+        producer = KafkaProducer(bootstrap_servers=[KAFKA_BOOTSTRAP_SERVER],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
   
         # Publish /Send
         ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
@@ -97,11 +97,11 @@ def callkafkaproducer():
 
 
 def sendEmailAlerte(errorMessage, exceptionMessage):
-    logger.info("Call Email Sender Alert ....************************************")   
+    logger.info(" Begin: Call Email Sender Alert ....************************************")   
     msg = EmailMessage()
     #msg.set_content('This is my message')
-    fullexceptionmessage = "Error after call Kafkaproducer : <p>" + exceptionMessage + "</p> </br>"
-    msg.set_content(fullexceptionmessage +'HTML email with <a href="https://alysivji.github.io">link</a>', subtype='html')
+    fullexceptionmessage = "Bonjour à Toutes et à Tous,  </br> </br> Alerte sur la disponibilité des brokers KAFKA.</br> Message = Error after call Kafkaproducer : <p>" + exceptionMessage + "</p> </br></br>  Cordialement"
+    msg.set_content(fullexceptionmessage, subtype='html')
 
     msg['Subject'] = errorMessage
     msg['From'] = "me@gmail.com"
@@ -126,7 +126,8 @@ def sendEmailHeartBeat():
     msg = EmailMessage()
     #msg.set_content('This is my message')
   
-    msg.set_content('<p> HeartBeat Kafka Broker Monitoring ....running ...</p>',subtype='html')
+    fullexceptionmessage = " Bonjour à Toutes et à Tous,  </br> </br> Message = HeartBeat for Kafka monitoring tools: Up ...</br> </br>  Cordialement"
+    msg.set_content(fullexceptionmessage,subtype='html')
 
     msg['Subject'] = "HeartBeat Kafka Broker Monitoring"
     msg['From'] = "me@gmail.com"
@@ -143,6 +144,7 @@ def sendEmailHeartBeat():
     except  Exception as e:
         print("Error: unable to send email : Print message ...", str(e))
         logger.error(f"Error: unable to send email: {e}")
+        raise
     else:
         #print("Nothing went wrong")
         server.quit()
@@ -151,14 +153,24 @@ def sendEmailHeartBeat():
 
 @catch_exceptions(cancel_on_failure=True)
 def  doTaskKafka():
-    print("--- call do Task Kafka  ----")
+    print("--- Begin: call do Task Kafka  ----")
     try:
         callkafkaproducer()
-        print("--- After call ----")
+        print("--- End of Task Kafka Broker :  OK ----")
     except Exception as e:
             errorMessage = "Kafka Exception sending message to Kafka/Kafkaproducer"
             logger.exception(errorMessage+ " %s", e)
-    
+
+
+@catch_exceptions(cancel_on_failure=True)
+def  doTaskEmailHeartBeat():
+    print("--- Begin: call do Task Email HeartBeat  ----")
+    try:
+        callkafkaproducer()
+        print("--- End of Task Kafka Email HeartBeat :  OK ----")
+    except Exception as e:
+            errorMessage = "Kafka Exception sending email /heartbeat "
+            logger.exception(errorMessage+ " %s", e)    
     
 def initScheduleTask():
     # for every n minutes
