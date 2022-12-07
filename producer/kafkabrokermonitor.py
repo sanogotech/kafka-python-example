@@ -49,14 +49,20 @@ def callkafkaproducer():
     try:
         ## Producer
         logger.info("Start : Creation du KafkaProducer with all brokers ")
-        producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        # https://kafka-python.readthedocs.io/en/master/apidoc/KafkaProducer.html
+        # request_timeout_ms (int) – Client request timeout in milliseconds. Default: 30000.
+        #max_block_ms (int) – Number of milliseconds to block during send() and partitions_for(). These methods can be blocked either because the buffer is full or metadata unavailable. 
+        #Blocking in the user-supplied serializers or partitioner will not be counted against this timeout. Default: 60000.
+        
+        producer = KafkaProducer(request_timeout_ms=60000,max_block_ms=120000,bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'),max_request_size=20971520,api_version = (2, 8, 0))
   
         # Publish /Send
-        ack = producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
-        metadata= ack.get()
-        print("Publish ... to topic PaiementMNPF ....")
-        print(" topic = ",metadata.topic)
-        print(" partition = ",metadata.partition)
+        producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+        #produder.flush()
+        #metadata= ack.get()
+        logger.info("Publish ... to topic supervisionmonitoring.... ")
+        print("Publish ... to topic supervisionmonitoring....")
+  
        
     except KafkaTimeoutError as kte:
             print("----------Exeption --------")
@@ -87,6 +93,7 @@ def callkafkaproducer():
         # TODO
         if producer is None:
             sendEmailAlerte("KafkaTimeoutError /Broker", "Broker x not Available") 
+        #elif producer is not None:
         else:
             logger.info("RAS : Test du Broker Kafka OK ....")  
         

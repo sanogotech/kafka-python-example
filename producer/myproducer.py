@@ -16,6 +16,8 @@ def main():
     producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
     ##ack = producer.send(topic='paiementMNPF',key= b'MTN', value={'refContrat': '255358642'})
     # metadata= ack.get()
+    ##producer.flush()
+    #flush() will block until the previously sent messages have been delivered (or errored), effectively making the producer synchronous
     print("Publish ... to topic supervisionmonitoring ....")
     ##print(" topic = ",metadata.topic)
     ##print(" partition = ",metadata.partition)
