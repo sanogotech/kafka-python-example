@@ -49,12 +49,15 @@ def callkafkaproducer():
     try:
         ## Producer
         logger.info("Start : Creation du KafkaProducer with all brokers ")
-        producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        ##producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        
+        producer = KafkaProducer(bootstrap_servers=['10.10.140.110:9093','10.10.140.111:9093','10.10.140.112:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        
   
         # Publish /Send
         ack = producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
         metadata= ack.get()
-        print("Publish ... to topic PaiementMNPF ....")
+        print("Publish ... to topic supervisionmonitoring ....")
         print(" topic = ",metadata.topic)
         print(" partition = ",metadata.partition)
        
@@ -104,14 +107,16 @@ def sendEmailAlerte(errorMessage, exceptionMessage):
     msg.set_content(fullexceptionmessage, subtype='html')
 
     msg['Subject'] = errorMessage
-    msg['From'] = "me@gmail.com"
-    msg['To'] = "you@gmail.com"
+    msg['From'] = "alerteKAFKA_APIMNPF@gs2e.ci"
+    receivers_mail = ['souleysanogo@gs2e.ci', 'franck.adou@gs2e.ci','ALHASSANE.KEITA@gs2e.ci']
+    ##receivers_mail = ['souleysanogo@gs2e.ci']
+    toAllEmails = ", ".join(receivers_mail)
+    print("All receivers emails list ... :",toAllEmails)
+    msg['To'] = toAllEmails
 
     try:
         # Send the message via our own SMTP server.
-        server = smtplib.SMTP('localhost', 25)
-        #server.login("me@gmail.com", "password")
-        #server.starttls()
+        server = createSmtpServer()
         server.send_message(msg)
         logger.info("OK: Send email ...")
         
@@ -130,14 +135,14 @@ def sendEmailHeartBeat():
     msg.set_content(fullexceptionmessage,subtype='html')
 
     msg['Subject'] = "HeartBeat Kafka Broker Monitoring"
-    msg['From'] = "me@gmail.com"
-    msg['To'] = "you@gmail.com"
+    msg['From'] = "alerteKAFKA_APIMNPF@gs2e.ci"
+    receivers_mail = ['souleysanogo@gs2e', 'franck.adou@gs2e.ci','ALHASSANE.KEITA@gs2e.ci']
+    toAllEmails = ", ".join(receivers_mail)
+    msg['To'] = toAllEmails
 
     try:
         # Send the message via our own SMTP server.
-        server = smtplib.SMTP('localhost', 25)
-        #server.login("me@gmail.com", "password")
-        #server.starttls()
+        server = createSmtpServer()
         server.send_message(msg)
         logger.info("OK: Send email ...")
         
@@ -150,6 +155,15 @@ def sendEmailHeartBeat():
         server.quit()
 
 
+def  createSmtpServer():
+
+    # Send the message via our own SMTP server.
+    # server = smtplib.SMTP('localhost', 25)
+    server = smtplib.SMTP('mail.univers.ci', 25)
+    #server.login("me@gmail.com", "password")
+    #server.starttls()
+    return server
+    
 
 @catch_exceptions(cancel_on_failure=True)
 def  doTaskKafka():
