@@ -1,0 +1,169 @@
+2022-12-08 10:32:08,687 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:32:09,458 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:32:09,458 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:33:09,556 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:33:09,694 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:33:09,695 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:34:09,841 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:35:10,073 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:35:10,075 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:36:10,192 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:37:10,444 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:37:10,444 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:38:10,498 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:38:10,631 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:38:10,631 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:39:10,665 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:39:10,820 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:39:10,821 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:40:10,855 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:40:11,006 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:40:11,007 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:41:11,042 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:42:11,292 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:42:11,292 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:43:11,324 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:43:11,466 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:43:11,467 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:44:11,499 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:45:11,719 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:45:11,721 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:46:11,762 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:47:12,020 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:47:12,021 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:48:12,053 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:50:12,199 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:50:12,200 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 72, in callkafkaproducer
+    producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 576, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 702, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 120.0 secs.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 10:51:12,237 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:52:12,451 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:52:12,453 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:53:12,493 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:54:12,740 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:54:12,740 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:55:12,771 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:57:12,911 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 10:57:12,911 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 72, in callkafkaproducer
+    producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 576, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 702, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 120.0 secs.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 10:58:12,946 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 10:59:13,197 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 10:59:13,197 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 11:00:13,230 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 11:01:13,491 INFO Publish ... to topic supervisionmonitoring.... 
+2022-12-08 11:01:13,493 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 11:02:13,545 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 11:04:13,698 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 11:04:13,698 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 72, in callkafkaproducer
+    producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 576, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 702, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 120.0 secs.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 11:05:13,728 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 11:07:13,857 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 11:07:13,857 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 72, in callkafkaproducer
+    producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 576, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 702, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 120.0 secs.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 11:08:13,892 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 11:10:14,039 INFO RAS : Test du Broker Kafka OK ....
+2022-12-08 11:10:14,039 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 72, in callkafkaproducer
+    producer.send(topic='supervisionmonitoring',key= b'MTN', value={'refContrat': '255358642'})
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 576, in send
+    self._wait_on_metadata(topic, self.config['max_block_ms'] / 1000.0)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 702, in _wait_on_metadata
+    raise Errors.KafkaTimeoutError(
+kafka.errors.KafkaTimeoutError: KafkaTimeoutError: Failed to update metadata after 120.0 secs.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 11:11:14,069 INFO Start : Creation du KafkaProducer with all brokers 
+2022-12-08 11:11:16,081 INFO  Begin: Call Email Sender Alert ....************************************
+2022-12-08 11:11:16,188 INFO OK: Send email ...
+2022-12-08 11:11:16,190 ERROR Kafka Exception sending message to Kafka/Kafkaproducer name 'KafkaTimeoutError' is not defined
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 54, in callkafkaproducer
+    producer = KafkaProducer(bootstrap_servers=['10.10.140.110:9092','10.10.140.111:9092','10.10.140.112:9092'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\producer\kafka.py", line 381, in __init__
+    client = KafkaClient(metrics=self._metrics, metric_group_prefix='producer',
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\client_async.py", line 244, in __init__
+    self.config['api_version'] = self.check_version(timeout=check_timeout)
+  File "C:\Users\SOULEYSANOGO\AppData\Local\Programs\Python\Python38-32\lib\site-packages\kafka\client_async.py", line 927, in check_version
+    raise Errors.NoBrokersAvailable()
+kafka.errors.NoBrokersAvailable: NoBrokersAvailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "kafkabrokermonitor.py", line 189, in doTaskKafka
+    callkafkaproducer()
+  File "kafkabrokermonitor.py", line 80, in callkafkaproducer
+    except KafkaTimeoutError as kte:
+NameError: name 'KafkaTimeoutError' is not defined
+2022-12-08 11:12:16,220 INFO Start : Creation du KafkaProducer with all brokers 

@@ -7,8 +7,9 @@ def subscriber(topic):
 
     # Consumer
     consumer = KafkaConsumer(
-    topic,
-     bootstrap_servers=['localhost:9092', 'localhost:9093'],
+     topic,
+     #bootstrap_servers=['localhost:9092', 'localhost:9093'],
+     bootstrap_servers=['localhost:9092'],
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='saphir-group',
@@ -30,7 +31,7 @@ def subscriber(topic):
 if __name__ == '__main__':
 
 
-   subscriber('paiementMNPF')
+   subscriber('mytopic')
    
    
    

@@ -15,7 +15,6 @@ class Program
 		
 		// retry settings:
         // Receive acknowledgement from all sync replicas
-		/*
         Acks = Acks.All,
         // Number of times to retry before giving up
         MessageSendMaxRetries = 3,
@@ -23,7 +22,7 @@ class Program
         RetryBackoffMs = 1000,
         // Set to true if you don't want to reorder messages on retry
         EnableIdempotence = true
-		*/
+		
 		
 		};
 

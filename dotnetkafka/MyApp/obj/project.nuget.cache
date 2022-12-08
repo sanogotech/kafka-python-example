@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "m1f7bS8QnI7oKwrH98/Cokmoxefncm2S0fFzBfqjCGQQ3P3jlSFRCJMLYJhTDb0tnJvl0967bSX5IYw7EHedyw==",
+  "success": true,
+  "projectFilePath": "C:\\POC\\KAFKA\\kafka-python-example\\dotnetkafka\\MyApp\\MyApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\confluent.kafka\\1.9.3\\confluent.kafka.1.9.3.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\librdkafka.redist\\1.9.2\\librdkafka.redist.1.9.2.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\SOULEYSANOGO\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

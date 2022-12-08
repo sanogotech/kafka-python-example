@@ -49,10 +49,9 @@ def callkafkaproducer():
     try:
         ## Producer
         logger.info("Start : Creation du KafkaProducer with all brokers ")
-<<<<<<< HEAD
         ##producer = KafkaProducer(bootstrap_servers=['localhost:9092','localhost:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         
-        producer = KafkaProducer(bootstrap_servers=['10.10.140.110:9093','10.10.140.111:9093','10.10.140.112:9093'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+        producer = KafkaProducer(bootstrap_servers=['10.10.140.110:9092','10.10.140.111:9092','10.10.140.112:9092'],value_serializer=lambda v: json.dumps(v).encode('utf-8'))
         
   
         # Publish /Send
@@ -61,7 +60,7 @@ def callkafkaproducer():
         print("Publish ... to topic supervisionmonitoring ....")
         print(" topic = ",metadata.topic)
         print(" partition = ",metadata.partition)
-=======
+
         # https://kafka-python.readthedocs.io/en/master/apidoc/KafkaProducer.html
         # request_timeout_ms (int) – Client request timeout in milliseconds. Default: 30000.
         #max_block_ms (int) – Number of milliseconds to block during send() and partitions_for(). These methods can be blocked either because the buffer is full or metadata unavailable. 
@@ -76,7 +75,7 @@ def callkafkaproducer():
         logger.info("Publish ... to topic supervisionmonitoring.... ")
         print("Publish ... to topic supervisionmonitoring....")
   
->>>>>>> 8c8ffa58025d836f0f46e98e0cfca7b836a9cf62
+
        
     except KafkaTimeoutError as kte:
             print("----------Exeption --------")
